@@ -559,7 +559,7 @@
 
   <!-- FORM -->
   <div class="form-wrap" id="formWrap">
-    <form id="signupForm" novalidate>
+    <form id="signupForm" action="https://formspree.io/f/maqvnjkq" method="POST" novalidate>
 
       <div class="form-section">
         <p class="section-heading">About you</p>
@@ -677,7 +677,7 @@
       const fill = document.getElementById('spotsFill');
       const count = document.getElementById('spotsCount');
       // Update this number as spots fill up!
-      const claimed = 2;
+      const claimed = 0;
       const total = 20;
       fill.style.width = (claimed / total * 100) + '%';
       count.textContent = claimed + ' of ' + total + ' claimed';
@@ -685,7 +685,7 @@
   });
 
   // Form submission
-  document.getElementById('signupForm').addEventListener('submit', function(e) {
+  document.getElementById('signupForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const form = e.target;
@@ -693,7 +693,6 @@
     const lastName = form.lastName.value.trim();
     const email = form.email.value.trim();
     const neighborhood = form.neighborhood.value.trim();
-    const pickup = form.pickup.value;
 
     // Basic validation
     if (!firstName || !lastName || !email || !neighborhood) {
@@ -706,10 +705,24 @@
       return;
     }
 
-    // Hide form, show success
-    document.getElementById('formWrap').classList.add('hidden');
-    document.getElementById('successScreen').classList.add('visible');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Submit to Formspree
+    try {
+      const response = await fetch('https://formspree.io/f/maqvnjkq', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+
+      if (response.ok) {
+        document.getElementById('formWrap').classList.add('hidden');
+        document.getElementById('successScreen').classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('Something went wrong — please try again or email me directly.');
+      }
+    } catch (error) {
+      alert('Something went wrong — please try again or email me directly.');
+    }
   });
 </script>
 
