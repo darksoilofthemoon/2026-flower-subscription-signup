@@ -677,7 +677,7 @@
       const fill = document.getElementById('spotsFill');
       const count = document.getElementById('spotsCount');
       // Update this number as spots fill up!
-      const claimed = 2;
+      const claimed = 0;
       const total = 20;
       fill.style.width = (claimed / total * 100) + '%';
       count.textContent = claimed + ' of ' + total + ' claimed';
@@ -716,7 +716,6 @@
       if (response.ok) {
         document.getElementById('formWrap').classList.add('hidden');
         document.getElementById('successScreen').classList.add('visible');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         alert('Something went wrong — please try again or email me directly.');
       }
