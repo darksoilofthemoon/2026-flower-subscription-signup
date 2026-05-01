@@ -296,7 +296,7 @@
   }
 
   .option-label {
-    font-size: 15px;
+    font-size: 17px;
     color: var(--ink);
     line-height: 1.4;
   }
@@ -595,22 +595,8 @@
         <p class="section-heading">Your subscription</p>
 
         <div class="field">
-          <label>Pickup preference <span class="req">*</span></label>
-          <div class="option-group">
-            <label class="option-item">
-              <input type="radio" name="pickup" value="stand" required>
-              <div>
-                <div class="option-label">I'll pick up from the flower stand</div>
-                <div class="option-sub">Bi-weekly, August–October — Flower Stand, Wildwood Street</div>
-              </div>
-            </label>
-            <label class="option-item">
-              <input type="radio" name="pickup" value="either">
-              <div>
-                <div class="option-label">Either works for me</div>
-                <div class="option-sub">I'm flexible — we can figure it out</div>
-              </div>
-            </label>
+          <div class="notice" style="margin-bottom: 0;">
+            <p>📍 All pickups are from the <strong>Flower Stand at Wildwood Street, Winchester</strong> — bi-weekly, August through October.</p>
           </div>
         </div>
 
@@ -710,7 +696,7 @@
     const pickup = form.pickup.value;
 
     // Basic validation
-    if (!firstName || !lastName || !email || !neighborhood || !pickup) {
+    if (!firstName || !lastName || !email || !neighborhood) {
       alert('Please fill in all required fields before continuing.');
       return;
     }
