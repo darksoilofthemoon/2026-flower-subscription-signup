@@ -518,12 +518,23 @@
   </header>
 
   <!-- Spots bar -->
-  <div class="spots-bar">
-    <span class="spots-text">Founding Forager spots</span>
-    <div class="spots-track">
+  <div class="spots-bar" style="background: #1a1108; border-color: #1a1108;">
+    <span class="spots-text" style="color: #f5f0e8;">🌑 Founding Forager spots</span>
+    <div class="spots-track" style="background: rgba(255,255,255,0.1);">
       <div class="spots-fill" id="spotsFill"></div>
     </div>
-    <span class="spots-text" id="spotsCount">0 of 20 claimed</span>
+    <span class="spots-text" style="color: #e8b4a0; font-weight: 500;" id="spotsCount">Sold out!</span>
+  </div>
+
+  <div style="background: #faf7f2; border: 1px solid rgba(92,30,42,0.2); border-radius: 2px; padding: 24px 28px; margin-bottom: 24px; text-align: center;">
+    <p style="font-size: 22px; margin-bottom: 8px;">🌸</p>
+    <p style="font-size: 18px; font-weight: 400; color: #5c1e2a; margin-bottom: 8px;">All 20 spots are taken!</p>
+    <p style="font-size: 15px; color: #3d4a2e; font-style: italic; line-height: 1.7; margin-bottom: 16px;">Thank you so much for the incredible support — this season is fully booked. If you'd like to be added to the waitlist for 2027, leave your email below and you'll be the first to know.</p>
+    <form action="https://formspree.io/f/mykowekg" method="POST" style="display: flex; gap: 8px; max-width: 380px; margin: 0 auto;">
+      <input type="hidden" name="type" value="waitlist">
+      <input type="email" name="email" placeholder="your@email.com" required style="flex: 1; padding: 12px 14px; border: 1px solid rgba(92,30,42,0.2); border-radius: 1px; font-family: Georgia, serif; font-size: 15px; background: white; outline: none;">
+      <button type="submit" style="background: #5c1e2a; color: white; border: none; padding: 12px 20px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; border-radius: 1px; white-space: nowrap;">Join waitlist</button>
+    </form>
   </div>
 
   <div class="intro">
@@ -558,7 +569,7 @@
   </div>
 
   <!-- FORM -->
-  <div class="form-wrap" id="formWrap">
+  <div class="form-wrap hidden" id="formWrap">
     <form id="signupForm" action="https://formspree.io/f/maqvnjkq" method="POST" novalidate>
 
       <div class="form-section">
@@ -677,7 +688,7 @@
       const fill = document.getElementById('spotsFill');
       const count = document.getElementById('spotsCount');
       // Update this number as spots fill up!
-      const claimed = 19;
+      const claimed = 20;
       const total = 20;
       fill.style.width = (claimed / total * 100) + '%';
       count.textContent = claimed + ' of ' + total + ' claimed';
